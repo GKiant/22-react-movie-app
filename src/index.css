@@ -67,6 +67,28 @@ small {
   background-color: rgba(0, 0, 0, 0.85);
 }
 
+.card-list {
+  margin-top: 4rem;
+}
+
+.card {
+  padding: 2rem 4rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2rem;
+  background-color: white;
+}
+
+.card--title {
+  margin-bottom: 0.5rem;
+  font-size: 3.2rem;
+}
+
+.card--image {
+  margin: 0 auto;
+  display: block;
+}
+
 @media (min-width: 786px) {
   .form {
     margin: 0 auto;
@@ -77,5 +99,14 @@ small {
   }
   .query--input {
     margin-bottom: 0;
+  }
+  .card {
+    display: flex;
+  }
+  .card--image {
+    margin: 0 2rem 0 0;
+  }
+  .card--content {
+    margin-right: auto;
   }
 }
