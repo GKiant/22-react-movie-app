@@ -1,30 +1,49 @@
-import { useEffect, useState } from "react";
+const MovieCard = ({
+  id,
+  img,
+  title,
+  releaseDate,
+  rating,
+  overview,
+  setSavedMovies,
+  savedMovies,
+}) => {
+  const isAdded = savedMovies.find((movie) => movie.id === id);
 
-const MovieCard = ({ img, title, releaseDate, rating, overview }) => {
-  const [showWatchlistText, setShowWatchlistText] = useState(false);
+  const addToWatchlist = () => {
+    const savedMovie = {
+      id,
+      img,
+      title,
+      release_date: releaseDate,
+      vote_average: rating,
+      overview,
+    };
 
-  useEffect(() => {
-    if (showWatchlistText) {
-      const timeoutId = setTimeout(() => {
-        setShowWatchlistText(false);
-      }, 1500);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [showWatchlistText]);
+    setSavedMovies((prevMovies) => [...prevMovies, savedMovie]);
+  };
+
+  const removeFromWatchlist = () => {
+    const updatedList = savedMovies.filter((movie) => movie.id !== id);
+    setSavedMovies(updatedList);
+  };
 
   return (
     <div className="card">
       <div className="card--image_container">
         <img className="card--image" src={img} alt={`${title} poster`} />
-        <button
-          className={`${
-            showWatchlistText ? "added-button" : "add-button"
-          } button`}
-          onClick={() => setShowWatchlistText(true)}
-          disabled={showWatchlistText}
-        >
-          {showWatchlistText ? "Added" : "Add to Watchlist"}
-        </button>
+        {isAdded ? (
+          <button
+            className="remove-button button"
+            onClick={removeFromWatchlist}
+          >
+            Remove
+          </button>
+        ) : (
+          <button className="add-button button" onClick={addToWatchlist}>
+            Add to Watchlist
+          </button>
+        )}
       </div>
 
       <div className="card--content">

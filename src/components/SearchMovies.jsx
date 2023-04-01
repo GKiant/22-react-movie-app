@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import EmptyPage from "./EmptyPage";
 
-const SearchMovies = () => {
+const SearchMovies = ({ savedMovies, setSavedMovies }) => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
 
@@ -12,32 +14,33 @@ const SearchMovies = () => {
       const res = await fetch(url);
       const data = await res.json();
       setMovies(data.results);
-      console.log(data.results);
     } catch (error) {
       console.error(error);
     }
   };
 
   const getMoviesElements = movies
-    .filter((movie) => movie.poster_path)
+    .filter((movie) => movie.poster_path && movie.overview)
     .map((movie) => (
       <MovieCard
         key={movie.id}
+        id={movie.id}
         img={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
         title={movie.title}
         releaseDate={movie.release_date}
         rating={movie.vote_average}
         overview={movie.overview}
+        setSavedMovies={setSavedMovies}
+        savedMovies={savedMovies}
       />
     ));
 
   return (
-    <>
+    <div className="container">
       <div className="top-container">
-        <nav className="nav">
-          <a href="#">Search</a>
-          <a href="#">My Watchlist</a>
-        </nav>
+        <Link to="/mywatchlist">
+          <span className="link--text">My Watchlist</span>
+        </Link>
         <h1 className="title">Movie Search</h1>
         <form className="form" onSubmit={searchMovies}>
           <label htmlFor="query" className="label">
@@ -57,8 +60,12 @@ const SearchMovies = () => {
         </form>
       </div>
 
-      <div className="card-list">{getMoviesElements}</div>
-    </>
+      {!movies.length ? (
+        <EmptyPage text="Start Exploring" />
+      ) : (
+        <div className="card-list">{getMoviesElements}</div>
+      )}
+    </div>
   );
 };
 
