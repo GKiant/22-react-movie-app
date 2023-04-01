@@ -33,22 +33,29 @@ const SearchMovies = () => {
 
   return (
     <>
-      <form className="form" onSubmit={searchMovies}>
-        <label htmlFor="query" className="label">
-          Movie title
-        </label>
-        <input
-          type="text"
-          name="query"
-          className="query--input"
-          placeholder="i.e. John Wick 4"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button className="button" type="submit">
-          Search
-        </button>
-      </form>
+      <div className="top-container">
+        <nav className="nav">
+          <a href="#">Search</a>
+          <a href="#">My Watchlist</a>
+        </nav>
+        <h1 className="title">Movie Search</h1>
+        <form className="form" onSubmit={searchMovies}>
+          <label htmlFor="query" className="label">
+            Movie title
+          </label>
+          <input
+            type="text"
+            name="query"
+            className="query--input"
+            placeholder="i.e. John Wick 4"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button className="submit-button button" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
 
       <div className="card-list">{getMoviesElements}</div>
     </>
