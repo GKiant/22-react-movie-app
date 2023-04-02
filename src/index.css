@@ -41,7 +41,7 @@ a {
 .container {
   margin: 0 auto;
   max-width: 1000px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 10px 10px;
 }
 
@@ -167,6 +167,38 @@ input:valid {
   font-size: 1.6rem;
 }
 
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination--button,
+.pagination--button_active {
+  width: 40px;
+  height: 40px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 0 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination--button {
+  background: transparent;
+  color: #eee;
+  border-color: #eee;
+}
+
+.pagination--button_active {
+  font-weight: 900;
+  border-color: #101010;
+  background: rgb(240, 234, 234);
+  color: #101010;
+}
+
 @media (min-width: 786px) {
   .form {
     margin: 0 auto;
@@ -182,14 +214,10 @@ input:valid {
     display: flex;
   }
   .card--image {
-    margin: 0 2rem 0 0;
+    margin: 0;
   }
   .card--content {
-    margin-right: auto;
-  }
-  .add-button,
-  .remove-button {
-    margin-right: 1.5rem;
+    margin: 0 auto 0 2rem;
   }
 }
 
