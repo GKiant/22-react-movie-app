@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-const Paginagition = ({
+const Pagination = ({
   totalMovies,
   MOVIES_PER_PAGE,
   currentPage,
@@ -27,4 +26,4 @@ const Paginagition = ({
   return <div className="pagination-container">{getPagesElements}</div>;
 };
 
-export default Paginagition;
+export default Pagination;

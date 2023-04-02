@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import EmptyPage from "./EmptyPage";
-import Paginagition from "./Paginagition";
+import Pagination from "./Pagination";
 
 const SearchMovies = ({
   savedMovies,
@@ -47,7 +47,7 @@ const SearchMovies = ({
     ));
 
   const pagination = (
-    <Paginagition
+    <Pagination
       totalMovies={
         movies.filter((movie) => movie.poster_path && movie.overview).length
       }

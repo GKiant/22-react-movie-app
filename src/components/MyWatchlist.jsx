@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import EmptyPage from "./EmptyPage";
 import MovieCard from "./MovieCard";
-import Paginagition from "./Paginagition";
+import Pagination from "./Pagination";
 
 const MyWatchlist = ({
   savedMovies,
@@ -29,7 +29,7 @@ const MyWatchlist = ({
     ));
 
   const pagination = (
-    <Paginagition
+    <Pagination
       totalMovies={savedMovies.length}
       MOVIES_PER_PAGE={MOVIES_PER_PAGE}
       currentPage={currentPage}
