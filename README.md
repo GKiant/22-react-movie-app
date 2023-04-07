@@ -1,2 +1,2 @@
 # 22-react-movie-app
- Movie search App built with React
+The Movie Search app is a React.js-based application that enables users to search for movies and add or remove them to/from their watchlist. The app uses The Movie Database API for movie data and employs React Hooks such as useState and useEffect. The routing is handled with React Router, and Vite is used as a bundler. Additionally, localstorage is utilized to persist user data between sessions.
